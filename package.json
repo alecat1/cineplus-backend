@@ -1,0 +1,33 @@
+{
+  "name": "tiktok",
+  "version": "1.0.0",
+  "description": "tiktokweb",
+  "main": "principal.js",
+  "scripts": {
+    "dev": "nodemon controlador/principal.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async-require": "^1.2.2",
+    "bcryptjs": "^2.4.3",
+    "connect-multiparty": "^2.2.0",
+    "cors": "^2.8.5",
+    "csv-stringify": "^5.5.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.4.1",
+    "get-ssl-certificate": "^2.3.3",
+    "helmet": "^3.22.0",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "tedious": "^8.3.0",
+    "xlsx": "^0.16.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
