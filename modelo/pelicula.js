@@ -12,7 +12,7 @@ connection.on('connect', (err)=>{
             global.connected=1;
             var data = [];
             var newL;        
-            var statment = "SELECT id,name,title,language,lob FROM tiktok.dbo.videos ORDER BY lob asc;"
+            var statment = "SELECT id_pelicula,image_name,descripcion,duracion,genero,hora,titulo FROM cinema.dbo.peliculas ORDER BY id_pelicula asc;"
             const request = await new tedious.Request(statment, function(err, rowCount, rows){
                 if(err){
                     data[0] = 'No se pudo obtener el archivo, intente de nuevo';
@@ -20,21 +20,29 @@ connection.on('connect', (err)=>{
                     newL=rows.length;
                     rows.forEach((element,index1) => {
                         var aux = {};
+                        var cast_image;
                         rows[index1].forEach((element,index2) => {
                             if(index2==0){
-                                aux.id=element.value;
+                                aux.id_pelicula=element.value;
                             }
                             if(index2==1){
-                                aux.name=element.value;                                
+                                cast_image
+                                aux.image_name=element.value;                                
                             }
                             if(index2==2){
-                                aux.title=element.value;
+                                aux.descripcion=element.value;
                             }
                             if(index2==3){
-                                aux.language=element.value;
+                                aux.duracion=element.value;
                             }
                             if(index2==4){
-                                aux.lob=element.value;
+                                aux.genero=element.value;
+                            }
+                            if(index2==5){
+                                aux.hora=element.value;
+                            }
+                            if(index2==6){
+                                aux.titulo=element.value;
                             }
                             
                         });
@@ -66,7 +74,7 @@ connection.on('connect', (err)=>{
         helpers.selectVideo = async (videoId) =>{
             global.connected=1;
             var data = [];
-            var statment = "SELECT name FROM tiktok.dbo.videos WHERE id="+videoId+";";            
+            var statment = "SELECT image_name FROM cinema.dbo.peliculas WHERE id_pelicula="+videoId+";";            
                 const request = await new tedious.Request(statment, function(err, rowCount, rows){
                 
                     if(err){
